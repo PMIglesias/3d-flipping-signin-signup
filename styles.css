@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Poppins:ital,wght@0,400;0,800;0,900;1,800;1,900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:'poppins', sans-serif;
+}
+
+body{
+    background-color: black;
+}
+
+section{
+    display:flex;
+    padding:20px;
+    position:relative;
+    min-height:100vh;
+    align-items:center;
+    transition:1s;
+    filter:brightness(110%);
+}
+
+section::before{
+    position:absolute;
+    content:'';
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(0, 0, 0, 0.2);
+}
+
+section .container{
+    position:relative;
+    background:transparent;
+    width:800%;
+    height:500%;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    perspective:1000px;
+    transition:1s;
+}
+
+section .container .flip{
+    position:relative;
+    height:100%;
+    width:100%;
+    transition:transform 1s;
+    transform-style: preserve-3d;
+}
+
+section .container.active .flip{
+    transform:rotateY('180');
+}
+
+section .container .flip::before{
+    position:absolute;
+    content:'';
+    top:0;
+    right:0;
+    width:50%;
+    height:100%;
+    backdrop-filter:blur(10px);
+    transition: 1s;
+}
+
+section .container .user{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:flex;
+}
+
+section .container .user .imgBX{
+    position:relative;
+    width:50%;
+    height:100%;
+   background:black;
+   opacity:0.8s;
+transition:1s;
+animation:animate Signin 6s linear infinite;
+transform-origin:right;
+}
+
+
+
+section .container.active .user .imgBX{
+    animation:animateSignup 6 linear infinite;
+    transform-origin:left;
+}
+
+section .container .user .formBX{
+    position:relative;
+    width:50%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background:rgba(255, 255, 255, 0.3);
+    transition:5s;
+    padding:200px;
+}
+
+section .container .user .formBX form h2{
+    font-size:20px;
+    font-weight: 60;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align:center;
+    width:100%;
+    margin-bottom: 10px;
+    color:white;
+}
+
+section .container .user .formBX form input{
+    width:100%;
+    outline:none;
+margin-bottom:5px;
+border:1px solid rgba(255, 255, 255, 0.2);
+background:transparent;
+padding: 8px 10px;
+color:white;
+font-size:16px;
+font-weight:300px;
+box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+section .container .user .formBX form input::placeholder{
+    color:white;
+}
+
+section .container .user .formBX form input[type='submit'] {
+max-width:100px;
+border:1px solid rgba(255, 255, 255, 0.1);
+box-shadow:inset 0 0 25px rgba(0,0, 0, 0.2);
+background:#000000;
+color:white;
+padding: 8px 10px;
+font-weight:800;
+letter-spacing: 1px;
+cursor:pointer;
+transition:0.3s;
+}
+
+section .container .user .formBX form input[type='submit']:hover {
+background:white;
+color:black;
+transition:0.3s;
+}
+
+section .container.active .user .formBX form input[type='submit']{
+    background:red;
+}
+
+section .container.active .user .formBX form input[type='submit']:hover {
+background:white;
+color:#111111;
+}
+
+section .container .user .formBX form .signup{
+    position:relative;
+    margin-top:20px;
+    font-size:12px;
+    letter-spacing:1px;
+    color:black;
+    text-transform: uppercase;
+    font-weight:300;
+}
+
+section .container .user .formBX form .signup a{
+font-weight: 600;
+text-decoration: none;
+color:blue;
+transition: 1s;
+
+}
+
+section .container.active .user .formBX form .signup a{
+color:red;
+
+}
+
+section .container .flip .signupBX{
+position:absolute;
+backface-visibility: hidden;
+transform: rotateY('180deg');
+background:transparent;
+}
+
+section .container .flip .signipBX{
+position:absolute;
+backface-visibility: hidden;
+background:transparent;
+}
+
+@keyframes animateSignin{
+0%,100%{
+    transform: translateX(-50px) rotateY('10deg');
+}
+
+50%{
+transform:translateX(0) rotateY('0');
+}
+
+}
